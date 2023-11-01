@@ -37,8 +37,14 @@ $ mysql -uroot -p  # Заходим на SQL-server. Password от твоего 
 mysql> create database zabbix character set utf8mb4 collate utf8mb4_bin;  # Создаём БД
 mysql> create user zabbix@localhost identified by 'zabbix';               # Создаём пользака и пароль
 mysql> grant all privileges on zabbix.* to zabbix@localhost;              # Даём привелегии пользаку
-mysql> set global log_bin_trust_function_creators = 1;                    # Включаем функцию логирования
+mysql> set global log_bin_trust_function_creators = 1;                    # Включаем опцию логирования
 mysql> quit;                                                              # Выходим
+
+# Перенос файла server.sql.gz из забикса в таблицу БД:
+$ zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p zabbix  # Пароль вводим от zabbix
+$ mysql -uroot -p                                       # Опять заходим на SQL-server. Password от твоего рута
+mysql> set global log_bin_trust_function_creators = 0;  # Выключаем опцию логирования
+mysql> quit;                                            # Выходим
 
 
 
