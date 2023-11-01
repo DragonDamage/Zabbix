@@ -36,7 +36,7 @@ $ mysql -uroot -p  # Заходим на SQL-server. Password от твоего 
 # Создание БД:
 mysql> create database zabbix character set utf8mb4 collate utf8mb4_bin;  # Создаём БД
 mysql> create user zabbix@localhost identified by 'zabbix';               # Создаём пользака и пароль
-mysql> grant all privileges on zabbix.* to zabbix@localhost;              # Даём привелегии пользаку
+mysql> grant all privileges on zabbix.* to zabbix@localhost;              # Даём привилегии пользаку
 mysql> set global log_bin_trust_function_creators = 1;                    # Включаем опцию логирования
 mysql> quit;                                                              # Выходим
 
@@ -63,7 +63,7 @@ $ ip -c a  #  Смотрим IP адрес (В моём случае это 192.
 # Идём в браузер и заходим в UI Zabbix:
 http://192.168.197.132/zaabbix
 
-# Если хотим руссифицировать Zabbix:
+# Если хотим русифицировать Zabbix:
 $ apt install locales       # Скачиваем языки
 $ dpkg-reconfigure locales  # Выбираем [*] ru_RU.UTF-8 UTF-8. Далее выбираем ru_RU.UTF-8
 $ systemctl reboot          # Перезапускаем сервер, чтобы появился выбор языка
@@ -82,20 +82,20 @@ Password: zabbix
 
 
 
-# ⚠️ Инструкция для отправке алертов Zabbix в Телеграм:
+# ⚠️ Инструкция для отправки алертов Zabbix в Телеграм:
 
 - 1. Включаем возможность оповещения:
-    - Оповещания → Действия триггеров → Активировать
+    - Оповещения → Действия триггеров → Активировать
 
 - 2. Настраиваем куда посылать алерты:
-    - Оповещания → Способы оповещений → Имя: Telegram → Активируем и нажимаем на имя
+    - Оповещения → Способы оповещений → Имя: Telegram → Активируем и нажимаем на имя
     - Параметры:
         - `To` - вставляем свой `chat id`
         - `Token` - вставляем `TOKEN` чат бота
         - Нажимаем `Обновить`
     - Нажимаем `тест`
 
-- 3. Настраиваем доп увеедомллку:
+- 3. Настраиваем доп уведомлялку:
     - Настройки пользователя → Профиль → Оповещения → Добавить
         - Отправлять на `chat id` → Добавить
       
