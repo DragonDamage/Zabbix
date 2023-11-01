@@ -63,7 +63,10 @@ $ ip -c a  #  Смотрим IP адрес (В моём случае это 192.
 # Идём в браузер и заходим в UI Zabbix:
 http://192.168.197.132/zaabbix
 
-
+# Если хотим руссифицировать Zabbix:
+$ apt install locales       # Скачиваем языки
+$ dpkg-reconfigure locales  # Выбираем [*] ru_RU.UTF-8 UTF-8. Далее выбираем ru_RU.UTF-8
+$ systemctl reboot          # Перезапускаем сервер, чтобы появился выбор языка
 
 
 
