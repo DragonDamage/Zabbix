@@ -46,6 +46,26 @@ $ mysql -uroot -p                                       # Опять заход�
 mysql> set global log_bin_trust_function_creators = 0;  # Выключаем опцию логирования
 mysql> quit;                                            # Выходим
 
+# Подправим конфигурацию Zabbix сервера:
+$ nano /etc/zabbix/zabbix_server.conf  # Ставим пароль zabbix юзеру - DBPassword=zabbix
+
+# Рестартуем процессы Zabbix сервера и агента:
+$ systemctl restart zabbix-server zabbix-agent apache2
+
+# Запускаем процессы Zabbix сервера и агента, и настраиваем их запуск при загрузке ОС:
+$ systemctl enable zabbix-server zabbix-agent apache2
+
+# Проверяем статусы процессов Zabbix сервера и агента:
+$ systemctl status zabbix-server zabbix-agent apache2
+
+$ ip -c a  #  Смотрим IP адрес (В моём случае это 192.168.197.132)
+
+# Идём в браузер и заходим в UI Zabbix:
+http://192.168.197.132/zaabbix
+
+
+
+
 
 
 ```
