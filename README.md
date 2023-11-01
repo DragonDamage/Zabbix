@@ -15,12 +15,42 @@
 # :computer: Инструкция по установке Zabbix на Linux:
 
 ```bash
+# Установка репозитория Zabbix:
 $ apt update
 $ apt upgrade
 $ wget https://repo.zabbix.com/zabbix/6.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.4-1+ubuntu20.04_all.deb  # Скачивание архива zabbix
 $ sudo dpkg -i zabbix-release_6.4-1+ubuntu20.04_all.deb  # Распаковываем из архива
 $ apt update
+
+# Установка Zabbix сервера, веб-интерфейса и агента:
 $ apt install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-sql-scripts zabbix-agent
 
-https://www.youtube.com/watch?v=H_yhU8Tn8Dg  # 4:52
+# Установка MySQL сервера:
+$ cd /tmp
+$ wget https://dev.mysql.com/get/mysql-apt-config_0.8.26-1_all.deb
+$ apt install gnupg
+$ dpkg -i mysql-apt-config_0.8.26-1_all.deb  # <OK>
+$ apt install default-mysql-server
+$ mysql -uroot -p  # Заходим на SQL-server. Password от твоего рута
+
+# Создание БД:
+mysql> create database zabbix character set utf8mb4 collate utf8mb4_bin;  # Создаём БД
+mysql> create user zabbix@localhost identified by 'zabbix';               # Создаём пользака и пароль
+mysql> grant all privileges on zabbix.* to zabbix@localhost;              # Даём привелегии пользаку
+mysql> set global log_bin_trust_function_creators = 1;                    # Включаем функцию логирования
+mysql> quit;                                                              # Выходим
+
+
+
 ```
+
+
+
+
+
+
+
+
+
+
+https://www.youtube.com/watch?v=H_yhU8Tn8Dg  # 4:52
