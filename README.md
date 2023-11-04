@@ -61,7 +61,7 @@ $ systemctl status zabbix-server zabbix-agent apache2
 $ ip -c a  #  Смотрим IP адрес (В моём случае это 192.168.197.132)
 
 # Идём в браузер и заходим в UI Zabbix:
-http://192.168.197.132/zaabbix
+http://192.168.197.132/zabbix
 
 # Если хотим русифицировать Zabbix:
 $ apt install locales       # Скачиваем языки
